@@ -1,0 +1,16 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://rm-m5eb4o2e0e2969ibkbo.mysql.rds.aliyuncs.com/mutsumi_love?useUnicode=true&characterEncoding=utf-8&useSSL=true&jdbcCompliantTruncation=false
+    username: InabaMeguru
+    password: xdLmgEugxYMlx3SmfQPx
+  servlet:
+    multipart:
+      max-file-size: 5MB  # ??????????????1MB
+      max-request-size: 20MB  # ???????????????????????10MB
+server:
+  port: 8081
+
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: true
