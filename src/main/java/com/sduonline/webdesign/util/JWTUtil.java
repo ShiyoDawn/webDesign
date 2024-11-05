@@ -18,6 +18,7 @@ public class JWTUtil {
 
     public static final int EXPIRE_TIME = 30 * 24 * 3600;//Token过期时间
     public static final int REFRESH_EXPIRE_TIME = 30 * 24 * 3600;//RefreshToken过期时间
+    public static final int REFRESH_POINT = 5 * 24 * 3600;//RefreshToken刷新界限
 
     //生成token
     public static String getToken(Map<String, String> map, int expireTime, String key) throws UnsupportedEncodingException {

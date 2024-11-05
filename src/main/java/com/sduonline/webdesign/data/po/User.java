@@ -12,8 +12,8 @@ import java.util.SplittableRandom;
 @NoArgsConstructor
 @TableName("user")
 public class User {
-    private int id;
-    private int stuId;
+    private Integer id;
+    private Integer stuId;
     private String username;
     private String phone;
     private String qq;

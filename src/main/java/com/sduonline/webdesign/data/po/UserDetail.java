@@ -10,11 +10,11 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @TableName("user_detail")
 public class UserDetail {
-    private int id;
-    private int user_id;
-    private int selling;
-    private int bought;
-    private int sold;
-    private int to_receive;
-    private int order;
+    private Integer id;
+    private Integer user_id;
+    private Integer selling;
+    private Integer bought;
+    private Integer sold;
+    private Integer to_receive;
+    private Integer order;
 }

@@ -21,8 +21,8 @@ public interface UserMapper extends BaseMapper<User> {
     @Select("select * from user where stu_id=#{stuId}")
     List<User> selectByStuId(String stuId);
 
-    @Insert("insert into user (stu_id, username, qq) values ( #{stuId}), #{username}, #{username}")
-    void insertNewUser(String stuId, String username, String qq);
+    @Insert("insert into user (stu_id, username,phone,qq) values (#{stuId}, #{username},0,0)")
+    void insertNewUser(String stuId, String username);
 
     @Update("update user set avatar=#{url} where id=#{id}")
     void addAvatar(Integer id, String url);

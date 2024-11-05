@@ -13,9 +13,9 @@ import java.util.Date;
 @NoArgsConstructor
 @TableName("message")
 public class Message {
-    private int id;
-    private int senderId;
-    private int receiver_id;
+    private Integer id;
+    private Integer senderId;
+    private Integer receiver_id;
     private String test;
     private Date time;
 }

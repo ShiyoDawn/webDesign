@@ -8,6 +8,20 @@ spring:
     multipart:
       max-file-size: 5MB  # ??????????????1MB
       max-request-size: 20MB  # ???????????????????????10MB
+  data:
+    redis:
+      database: 0
+      host: 110.40.181.16
+      port: 6379
+      password: S62tcFeZ$
+      timeout: 1000
+      jedis:
+        pool:
+          max-active: 8
+          max-wait: -1
+          max-idle: 8
+          min-idle: 0
+
 server:
   port: 8081
 
