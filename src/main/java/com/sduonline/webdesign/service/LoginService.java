@@ -18,8 +18,8 @@ import static com.sduonline.webdesign.util.JWTUtil.REFRESH_SECRET_KEY;
 
 @Service
 public class LoginService {
-//    @Autowired
-//    private IGlobalCache iGlobalCache;
+    @Autowired
+    private IGlobalCache iGlobalCache;
     @Autowired
     UserMapper userMapper;
     public Result SDUIdentify(String SDUId, String password) {
@@ -57,8 +57,8 @@ public class LoginService {
 
         try{
             String refreshToken = JWTUtil.getTokenWithPayLoad(SDUId, JWTUtil.REFRESH_EXPIRE_TIME, REFRESH_SECRET_KEY);
-            //TODO 实现redis后使用
-            //iGlobalCache.set(SDUId, refreshToken, JWTUtil.REFRESH_EXPIRE_TIME);
+
+            iGlobalCache.set(SDUId, refreshToken, JWTUtil.REFRESH_EXPIRE_TIME);
             String token = JWTUtil.getTokenWithPayLoad( SDUId, JWTUtil.EXPIRE_TIME, JWTUtil.SECRET_KEY);
 
             Map<String, String> map = new HashMap<>();
@@ -77,7 +77,7 @@ public class LoginService {
         else return true;
     }
 
-/*    public Result refresh(String refreshToken) {
+    public Result refresh(String refreshToken) {
         try {
             DecodedJWT info = JWTUtil.getTokenInfo(refreshToken, JWTUtil.REFRESH_SECRET_KEY);
             String userName = info.getClaim("user_name").asString();
@@ -101,34 +101,13 @@ public class LoginService {
                 } else {
                     msg = "成功！已获取新accessToken";
                 }
-                return Result.complete(Constant.SUCCESS, map, msg);
-            }
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
-        return Result.error(Constant.AUTHENTICATED_FAILED, "无有效RefreshToken");
-    }
-*/
-
-    public Result refresh(String refreshToken) {
-        try {
-            DecodedJWT info = JWTUtil.getTokenInfo(refreshToken, REFRESH_SECRET_KEY);
-            String SDUId = info.getClaim("user_id").asString();
-            Date date = info.getExpiresAt();
-            if (date.after(new Date())) {
-                String newAccessToken = JWTUtil.getTokenWithPayLoad(SDUId, JWTUtil.EXPIRE_TIME, JWTUtil.SECRET_KEY);
-                Map<String, String> map = new HashMap<>();
-                map.put("accessToken", newAccessToken);
-                String msg;
-                msg = "成功！已获取新accessToken";
                 return new Result(200, map, msg);
             }
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
-        return Result.error(400, "无有效RefreshToken");
+        return Result.error(402, "无有效RefreshToken");
     }
-
 
 
 }

@@ -11,9 +11,9 @@ spring:
   data:
     redis:
       database: 0
-      host: 110.40.181.16
+      host: 120.55.182.180
       port: 6379
-      password: S62tcFeZ$
+      password:
       timeout: 1000
       jedis:
         pool:
