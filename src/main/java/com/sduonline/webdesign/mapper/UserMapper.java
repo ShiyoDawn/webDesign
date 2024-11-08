@@ -1,6 +1,7 @@
 package com.sduonline.webdesign.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.sduonline.webdesign.data.po.User;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
@@ -63,4 +64,6 @@ public interface UserMapper extends BaseMapper<User> {
     void reduceToReceive(Integer id,Integer toReceive);
     @Update("update user_detail set order=#{order} where id=#{id}")
     void reduceOrder(Integer id,Integer order);
+
+    IPage<User> selectPageVo(IPage<?> page, Integer state);
 }
